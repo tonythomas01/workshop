@@ -1,0 +1,27 @@
+<html>
+{%  load staticfiles %}
+<head>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="{%  static 'css/bootstrap.min.css' %}" />
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="{%  static 'css/bootstrap-theme.min.css' %}"/>
+
+    <script src="{% static 'js/jquery-1.12.4.min.js' %}"> </script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" href="{%  static 'css/font-awesome.css' %}"/>
+</head>
+
+<body>
+{%  include 'navbar.html' %}
+
+
+{% block body %}
+
+{% endblock body %}
+
+</body>
+
+</html>

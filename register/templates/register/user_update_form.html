@@ -1,0 +1,37 @@
+{%  extends 'base.html' %}
+{% load register_extras %}
+{%  load staticfiles %}
+{%  block body %}
+<div class="col-md-6 col-md-offset-3">
+    <form class="form-horizontal well" id="registerForm" method="POST"
+          enctype="multipart/form-data" action="">
+        <fieldset>
+            {% csrf_token %} {% load tz %}
+            {% for field in form.visible_fields %}
+                <div id="div_{{ field.html_name }}"
+                     class="form-group{% if field.errors %} has-error{% endif%}">
+                    <label class="col-sm-4 control-label" for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                    </label>
+                    <div class="col-md-6 cnt-inpt">
+                        {{ field|addcss:"form-control" }}
+                        <div class="text-muted pull-right">
+                            <small>{{ field.help_text }}</small>
+                        </div> <!-- form-group -->
+          											<span class="help-block">
+          													{% for error in field.errors %} {{error }} {% endfor %}
+          											</span> <!-- help-block -->
+                    </div> <!-- col-sm-4 -->
+                </div>
+            {% endfor %}
+            {% for hidden in user_form.hidden_fields %} {{ hidden }} {% endfor %}
+
+            <div class="form-group" style="text-align:center">
+                <a href="#tf-courses">
+                    <button type="submit" data-loading-text="Creating request..."
+                            class="btn btn-success solution_buttons">Update Profile<i class="fa fa-angle-double-right"></i> </button></a>
+            </div> <!-- form-group -->
+        </fieldset>
+    </form>
+</div>
+{%  endblock body %}
